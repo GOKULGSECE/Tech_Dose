@@ -5,6 +5,5 @@ public class togglebits {
         int num = (1<<i);
         a = a^num;
         System.out.println(a);
-
     }
 }
