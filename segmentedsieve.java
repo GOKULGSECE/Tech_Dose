@@ -26,22 +26,25 @@ public class segmentedsieve {
 
     public static void main(String[] args) {
         int left = 40;
-        int right = 800; 
+        int right = 800;
         List<Integer> smallPrimes = sieve((int) Math.ceil(Math.sqrt(right)));
         boolean[] segSieve = new boolean[right - left + 1];
         Arrays.fill(segSieve, true);
         for (int prime : smallPrimes) {
-            int start = Math.max(prime * prime, (left + prime - 1) / prime * prime);
-            if (start < left) {
-                start = (left + prime - 1) / prime * prime;
+            int sm = (left / prime) * prime;
+            if (sm < left) {
+                sm += prime;
             }
-            for (int j = start; j <= right; j += prime) {
-                segSieve[j - left] = false;
+            if (sm == prime) {
+                sm += prime;
+            }
+            for (int m = sm; m <= right; m += prime) {
+                segSieve[m - left] = false;
             }
         }
         List<Integer> resultPrimes = new ArrayList<>();
         for (int i = 0; i < segSieve.length; i++) {
-            if (segSieve[i] && (i + left) >= 2) {
+            if (segSieve[i]) {
                 resultPrimes.add(i + left);
             }
         }
