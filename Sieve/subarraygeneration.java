@@ -1,3 +1,4 @@
+package Sieve;
 import java.util.*;
 public class subarraygeneration {
     public static void main(String[] args) {

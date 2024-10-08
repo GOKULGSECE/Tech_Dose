@@ -1,3 +1,4 @@
+package Sieve;
 public class sieve {
     public static void main(String[] args) {
         int n = 100;
